@@ -29,12 +29,12 @@ export const App = () => {
       Hello Coders!
       <div>
         <h4>Light Poem</h4>
-        <p>{lightPoem}</p>
+        <pre>{lightPoem}</pre>
       </div>
       <hr />
       <div>
         <h4>Dark Poem</h4>
-        <p>{darkPoem}</p>
+        <pre>{darkPoem}</pre>
       </div>
     </div>
   );
