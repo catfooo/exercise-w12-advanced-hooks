@@ -1,7 +1,18 @@
-import { useState } from "react";
+import { useState, useLayoutEffect } from "react";
+import './styles.css'
 
 export const App = () => {
   const [theme, setTheme] = useState("light");
+
+  // Toggle theme function
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"))
+  }
+
+  // Use the useLayoutEffect hook to update the body class
+  useLayoutEffect(() => {
+    document.body.className = theme;
+  }, [theme])
 
   const lightPoem = `
   In realms where light does softly tread,
@@ -27,15 +38,18 @@ export const App = () => {
   return (
     <div className="App">
       Hello Coders!
-      <div>
-        <h4>Light Poem</h4>
-        <pre>{lightPoem}</pre>
-      </div>
-      <hr />
-      <div>
-        <h4>Dark Poem</h4>
-        <pre>{darkPoem}</pre>
-      </div>
+      <button onClick={toggleTheme}>Toggle Theme</button>
+      {theme === "light" ? (
+        <div>
+          <h4>Light Poem</h4>
+          <pre>{lightPoem}</pre>
+        </div>
+      ) : (
+        <div>
+          <h4>Dark Poem</h4>
+          <pre>{darkPoem}</pre>
+        </div>
+      )}
     </div>
   );
 };
